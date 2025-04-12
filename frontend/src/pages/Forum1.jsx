@@ -103,7 +103,7 @@ const Forum = () => {
         </div>
       </main>
     </div>
-  );
+  );  
 };
 
-export default Forum;
+export default Forum; 
