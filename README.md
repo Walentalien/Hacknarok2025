@@ -10,7 +10,7 @@ Ważne i kluczowe aspkety:
 - skierowana do organizacji rządowych
 - ważna transprentność
 - archiwizacja
-- ranking na podstawie ilości osób / postów.
+- ranking na podstawie ilości osób / postów oraz miejsca zamieszkania / zameldowania związane z lokalizacją.
 - moderacja brzydkich słów.
 
 Do przeddyskutowania:
