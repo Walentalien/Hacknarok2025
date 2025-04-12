@@ -19,24 +19,34 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const response = await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        localStorage.setItem('token', data.token);
-        localStorage.setItem('user', JSON.stringify(data.user));
-        navigate('/forum');
+    
+    // Mock successful login with any credentials
+    const mockUser = {
+      id: 'mock-user-id',
+      username: formData.username,
+      email: `${formData.username}@example.com`,
+      city: 'Warsaw',
+      district: 'Mokotow',
+      isVerified: true,
+      isPublicFigure: false,
+      mObywatelData: {
+        pesel: "12345678901",
+        firstName: formData.username,
+        lastName: "Kowalski",
+        city: "Warsaw",
+        district: "Mokotow",
+        street: "ul. Przykładowa 1",
+        postalCode: "00-001",
+        isVerified: true
       }
-    } catch (error) {
-      console.error('Login error:', error);
-    }
+    };
+
+    // Store mock data in localStorage
+    localStorage.setItem('token', 'mock-token-123');
+    localStorage.setItem('user', JSON.stringify(mockUser));
+    
+    // Navigate to home page
+    navigate('/home');
   };
 
   return (
@@ -80,6 +90,7 @@ const Login = () => {
                 onChange={handleChange}
                 placeholder="Nazwa użytkownika"
                 className="form-input"
+                required
               />
             </div>
             <div className="form-group">
@@ -90,6 +101,7 @@ const Login = () => {
                 onChange={handleChange}
                 placeholder="Hasło"
                 className="form-input"
+                required
               />
             </div>
             <button type="submit" className="submit-button">
