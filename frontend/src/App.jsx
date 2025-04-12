@@ -4,6 +4,7 @@ import Forum from './pages/forum';
 import Login from './pages/login';
 import Layout from './pages/layout';
 
+
 function App() {
 
   // todo
@@ -18,7 +19,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Layout />}>
+        <Route path="/" element={<Layout searchOpen = {true} />}>
           <Route index element={<Home />} />        
           <Route path="/forum" element={<Forum />} /> 
         </Route>
