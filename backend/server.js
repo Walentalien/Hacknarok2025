@@ -1,31 +1,64 @@
 const express = require('express');
 const http = require('http');
-const socketIo = require('socket.io');
+const { Server } = require('socket.io');
+const cors = require('cors');
+
+const PORT = 3000
 
 const app = express();
 const server = http.createServer(app);
-const io = socketIo(server);
 
-app.use(express.static('public'));
+app.use(cors({
+  origin: "http://localhost:5173",
+  credentials: true
+}));
 
-app.get('/', (req, res) => {
-  res.send('Serwer czatu działa!');
+const io = new Server(server, {
+  cors: {
+    origin: "http://localhost:5173",
+    methods: ["GET", "POST"],
+    allowedHeaders: ["my-custom-header"],
+    credentials: true
+  },
+  allowEIO3: true 
 });
 
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'http://localhost:5173');
+  res.header('Access-Control-Allow-Methods', 'GET, POST');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  next();
+});
+
+app.get('/', (req, res) => {
+  res.send('Serwer działa!');
+});
+
+
 io.on('connection', (socket) => {
-  console.log('Nowy użytkownik połączony:', socket.id);
+  console.log('User connected:', socket.id);
 
   socket.on('message', (data) => {
-    console.log('Otrzymano wiadomość:', data);
-    io.emit('message', data);
+    console.log('Received message:', data);
+
+    // const message = new Message({ user: data.user, text: data.message });
+    // message.save((err) => {
+    //   if (err) {
+    //     console.error('Error saving message to database:', err);
+    //   } else {
+    //     console.log('Message saved to the database');
+    //   }
+    // });
+
+    // Not really needed
+    // io.emit('message', data);
   });
 
   socket.on('disconnect', () => {
-    console.log('Użytkownik rozłączony:', socket.id);
+    console.log('User disconnected:', socket.id);
   });
 });
 
-const PORT = 3000;
 server.listen(PORT, () => {
-  console.log(`Serwer działa na http://localhost:${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
