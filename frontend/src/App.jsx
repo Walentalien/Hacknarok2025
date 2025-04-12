@@ -20,10 +20,8 @@ function App() {
   return (
     <Router>
       <Routes>
-        {/* Redirect from root (/) to the first discussion page */}
-        <Route path="/" element={<Navigate to="/discussion/1" />} />
-
-        <Route path="/login" element={<Discussion />} />
+        <Route path="/" element={<Landing />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/home" element={
           <PrivateRoute>
             <Layout>

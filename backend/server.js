@@ -8,6 +8,7 @@ const { check, validationResult } = require('express-validator');
 const User = require('./models/User');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const topicRoutes = require('./routes/topics');
 
 const app = express();
 const server = http.createServer(app);
@@ -135,21 +136,8 @@ app.get('/api/cabinet/profile', authMiddleware, async (req, res) => {
   }
 });
 
-app.get('/api/cabinet/discussions', authMiddleware, async (req, res) => {
-  try {
-    const topics = await Topic.find({ 
-      participants: req.user._id 
-    }).sort({ updatedAt: -1 });
-    
-    res.json({ topics });
-  } catch (error) {
-    res.status(500).json({ message: 'Server error' });
-  }
-});
-
-// Protected routes
-app.use('/api/topics', authMiddleware);
-app.use('/api/posts', authMiddleware);
+// Use topic routes
+app.use('/api/topics', authMiddleware, topicRoutes);
 
 // Socket.io connection handling
 io.on('connection', (socket) => {

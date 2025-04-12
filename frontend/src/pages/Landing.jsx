@@ -1,35 +1,52 @@
-import React from 'react';
+import { Link } from 'react-router-dom';
+import SearchIcon from '@mui/icons-material/Search';
+import ChatIcon from '@mui/icons-material/Chat';
+import PersonIcon from '@mui/icons-material/Person';
+import MenuIcon from '@mui/icons-material/Menu';
 import './Landing.css';
 
 const Landing = () => {
   return (
-    <div className="landing-container">
-      <h1>Witaj na Forum</h1>
-      
-      <div className="content-grid">
-        <div className="selected-ternary">
-          <h2>Wybrane Ternary</h2>
-          <ul>
-            <li>Temat nr 1</li>
-            <li>Temat nr 2</li>
-            <li>Temat nr 3</li>
-            <li>Temat nr 4</li>
-          </ul>
+    <div className="landing-page">
+      {/* Top Navigation Bar */}
+      <nav className="top-nav">
+        <button className="menu-button">
+          <MenuIcon />
+        </button>
+        <div className="nav-right">
+          <button className="nav-icon-button">
+            <SearchIcon />
+          </button>
+          <button className="nav-icon-button">
+            <ChatIcon />
+          </button>
+          <button className="nav-icon-button">
+            <PersonIcon />
+          </button>
+          <Link to="/login" className="login-button">
+            Zaloguj
+          </Link>
         </div>
+      </nav>
+
+      {/* Main Content */}
+      <main className="main-content">
+        <h1>Witaj na Forum</h1>
         
-        <div className="map">
-          <h2>Mapa</h2>
-          {/* Map placeholder would go here */}
+        {/* Category Buttons */}
+        <div className="category-buttons">
+          <button className="category-button">W mojej okolicy</button>
+          <button className="category-button">Polityka</button>
+          <button className="category-button">Infrastruktura</button>
+          <button className="category-button">Kultura</button>
+          <button className="category-button">Sport</button>
         </div>
-      </div>
-      
-      <div className="local-topics">
-        <h2>Tematy w twojej okolicy</h2>
-        <ul>
-          <li>Temat nr 1</li>
-          <li>Temat nr 2</li>
-        </ul>
-      </div>
+
+        {/* Grid Toggle Button */}
+        <button className="grid-toggle">
+          <span className="grid-icon"></span>
+        </button>
+      </main>
     </div>
   );
 };
