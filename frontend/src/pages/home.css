@@ -1,3 +1,32 @@
+.home-page {
+  min-height: 100vh;
+  background-color: #f8f9fa;
+}
+
+.forum-header {
+  background-color: #4B0082;
+  padding: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.forum-main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.posts-list {
+  margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+  .forum-main {
+    padding: 0.5rem;
+  }
+}
+
 .home {
   padding: 2rem 0;
 }

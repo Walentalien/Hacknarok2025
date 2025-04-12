@@ -1,28 +1,41 @@
 import React from 'react';
+import TopNav from '../components/TopNav';
+import CategoryNav from '../components/CategoryNav';
+import ForumPostPreview from '../components/ForumPostPreview';
 import './home.css';
 
-export default function Home() {
+const Home = () => {
+  const posts = [
+    {
+      title: "Chodnik na ulicy Mikołaja Kopernika - łatanie dziur",
+      content: "Czy wiadomo coś na temat planowanych prac naprawczych chodnika przy ulicy Mikołaja Kopernika? Chodnik jest w bardzo złym stanie – pełen dziur, pęknięć i nierówności, co stanowi realne zagrożenie, zwłaszcza dla osób starszych i dzieci...",
+      score: "54/23",
+      featuredComment: {
+        author: "Marek Nowak",
+        content: "Zgłaszałem to do urzędu kilka miesięcy temu, ale jak na razie cisza. Może warto ponowić zgłoszenie grupowo?",
+        avatarColor: "#FFD700"
+      }
+    },
+    {
+      title: "Sadzenie drzew przy chodniku w ciągu ulicy Pięknej",
+      content: "Propozycja zazieleniania naszej okolicy poprzez nasadzenia drzew wzdłuż chodnika...",
+      score: "32/5"
+    }
+  ];
+
   return (
-    <div className="home">
-      <section className="hero">
-        <h1>Welcome to Our Platform</h1>
-        <p>Discover amazing features and services</p>
-      </section>
-      
-      <section className="features">
-        <div className="feature-card">
-          <h2>Feature 1</h2>
-          <p>Amazing feature description goes here</p>
+    <div className="home-page">
+      <TopNav />
+      <main className="forum-main">
+        <CategoryNav />
+        <div className="posts-list">
+          {posts.map((post, index) => (
+            <ForumPostPreview key={index} {...post} />
+          ))}
         </div>
-        <div className="feature-card">
-          <h2>Feature 2</h2>
-          <p>Another great feature description</p>
-        </div>
-        <div className="feature-card">
-          <h2>Feature 3</h2>
-          <p>One more awesome feature explained</p>
-        </div>
-      </section>
+      </main>
     </div>
   );
-}
+};
+
+export default Home;
