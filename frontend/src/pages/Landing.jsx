@@ -14,9 +14,9 @@ const Landing = () => {
           <MenuIcon />
         </button>
         <div className="nav-right">
-          <button className="nav-icon-button">
+          <Link to="/search" className="nav-icon-button">
             <SearchIcon />
-          </button>
+          </Link>
           <button className="nav-icon-button">
             <ChatIcon />
           </button>

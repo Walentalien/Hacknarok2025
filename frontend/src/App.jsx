@@ -21,18 +21,12 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Landing />} />
+        <Route path="/search" element={<Search />} />
         <Route path="/login" element={<Login />} />
         <Route path="/home" element={
           <PrivateRoute>
             <Layout>
               <Home />
-            </Layout>
-          </PrivateRoute>
-        } />
-        <Route path="/search" element={
-          <PrivateRoute>
-            <Layout>
-              <Search />
             </Layout>
           </PrivateRoute>
         } />

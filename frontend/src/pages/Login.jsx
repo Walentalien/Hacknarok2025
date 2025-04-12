@@ -1,118 +1,97 @@
 import { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
+import SearchIcon from '@mui/icons-material/Search';
+import ChatIcon from '@mui/icons-material/Chat';
+import PersonIcon from '@mui/icons-material/Person';
 import './Login.css';
 
 const Login = () => {
-  const [formData, setFormData] = useState({
+  const [loginData, setLoginData] = useState({
     username: '',
-    password: '',
+    password: ''
   });
-  const navigate = useNavigate();
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    const { name, value } = e.target;
+    setLoginData(prev => ({
+      ...prev,
+      [name]: value
+    }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    
-    // Mock successful login with any credentials
-    const mockUser = {
-      id: 'mock-user-id',
-      username: formData.username,
-      email: `${formData.username}@example.com`,
-      city: 'Warsaw',
-      district: 'Mokotow',
-      isVerified: true,
-      isPublicFigure: false,
-      mObywatelData: {
-        pesel: "12345678901",
-        firstName: formData.username,
-        lastName: "Kowalski",
-        city: "Warsaw",
-        district: "Mokotow",
-        street: "ul. Przykładowa 1",
-        postalCode: "00-001",
-        isVerified: true
-      }
-    };
-
-    // Store mock data in localStorage
-    localStorage.setItem('token', 'mock-token-123');
-    localStorage.setItem('user', JSON.stringify(mockUser));
-    
-    // Navigate to home page
-    navigate('/home');
+    // Handle login logic here
   };
 
   return (
     <div className="login-page">
-      <div className="info-banner">
-        <span>Strona informacyjna portalu</span>
-        <Link to="/" className="info-banner-link">Przejdź do strony</Link>
-      </div>
-
-      <header className="header">
-        <div className="header-left">
-          <button className="menu-button" aria-label="Menu">
-            <MenuIcon />
+      {/* Top Navigation Bar */}
+      <nav className="top-nav">
+        <button className="menu-button">
+          <MenuIcon />
+        </button>
+        <div className="nav-right">
+          <Link to="/search" className="nav-icon-button">
+            <SearchIcon />
+          </Link>
+          <button className="nav-icon-button">
+            <ChatIcon />
           </button>
-          <div className="logo-container">
-            <img src="/polish-eagle.png" alt="Godło Polski" className="polish-eagle" />
-            <span className="gov-text">Gov.pl</span>
-            <div className="separator"></div>
-            <span className="service-name">Serwis Rzeczypospolitej Polskiej</span>
-          </div>
-        </div>
-        <div className="header-right">
-          <Link to="/login" className="login-link">
+          <button className="nav-icon-button">
+            <PersonIcon />
+          </button>
+          <Link to="/login" className="login-button active">
             Zaloguj
           </Link>
-          <img src="/eu-flag.png" alt="Flaga UE" className="eu-flag" />
         </div>
-      </header>
+      </nav>
 
-      <main className="main-content">
-        <h1>Witamy na forum</h1>
-        
-        <div className="login-box">
-          <h2>Logowanie</h2>
+      {/* Main Content */}
+      <main className="login-content">
+        <div className="login-container">
+          <h1>Logowanie</h1>
+          
           <form onSubmit={handleSubmit} className="login-form">
             <div className="form-group">
               <input
                 type="text"
                 name="username"
-                value={formData.username}
+                value={loginData.username}
                 onChange={handleChange}
-                placeholder="Nazwa użytkownika"
-                className="form-input"
-                required
+                placeholder="Login"
+                className="login-input"
               />
             </div>
+
             <div className="form-group">
               <input
                 type="password"
                 name="password"
-                value={formData.password}
+                value={loginData.password}
                 onChange={handleChange}
                 placeholder="Hasło"
-                className="form-input"
-                required
+                className="login-input"
               />
+              <Link to="/forgot-password" className="forgot-password">
+                Nie pamiętasz hasła?
+              </Link>
             </div>
+
             <button type="submit" className="submit-button">
               Zaloguj
             </button>
-          </form>
-        </div>
 
-        <div className="mobywatel-links">
-          <Link to="#" className="mobywatel-link">mObywatel w przeglądarce</Link>
-          <Link to="#" className="mobywatel-link">mObywatel w aplikacji</Link>
+            <div className="login-divider">
+              <span>Lub użyj profilu zaufanego</span>
+            </div>
+
+            <button type="button" className="trusted-profile-button">
+              Login
+              <img src="/trusted-profile-logo.svg" alt="Profil zaufany" className="trusted-profile-icon" />
+            </button>
+          </form>
         </div>
       </main>
     </div>
