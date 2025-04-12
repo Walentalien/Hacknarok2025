@@ -8,12 +8,26 @@ async function createDatabaseWithValidator() {
   try {
     
     await client.connect();
-    const db = client.db("AppDB");
+    const dbName = "AppDB";
+    const db = client.db(dbName);
+
+    const collections = await db.listCollections().toArray();
+    const collectionNames = collections.map(col => col.name);
+
+    if (collectionNames.includes("users")) {
+      await db.collection("users").drop();
+      console.log('Dropped existing "users" collection.');
+    }
+
+    if (collectionNames.includes("discussions")) {
+      await db.collection("discussions").drop();
+      console.log('Dropped existing "discussions" collection.');
+    }
 
     const user_validator = {
       $jsonSchema: {
         bsonType: "object",
-        required: ["firstname","lastname", "email","birth_date","adress","discussions"],  
+        required: ["firstname","lastname", "email","birth_date","address","discussions"],  
         properties: {
           firstname: { 
             bsonType: "string",
@@ -82,6 +96,8 @@ async function createDatabaseWithValidator() {
       validator: user_validator,
       validationAction: "error"  
     });
+
+    await users_collection.createIndex({ email: 1 }, { unique: true });
 
     const discussions_validator = {
       $jsonSchema: {
