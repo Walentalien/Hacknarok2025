@@ -1,11 +1,7 @@
-import { useState } from 'react';
-
-import Navbar from '../components/navbar';
-
-export default function Counter() {
+export default function Home() {
 
 
   return (
-      <Navbar />
+      <h1>Home</h1>
   )
 }

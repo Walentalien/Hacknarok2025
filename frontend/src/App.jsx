@@ -1,5 +1,8 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import Home from './pages/home'
+import Forum from './pages/forum';
+import Login from './pages/login';
+import Layout from './pages/layout';
 
 function App() {
 
@@ -15,7 +18,11 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />        
+          <Route path="/forum" element={<Forum />} /> 
+        </Route>
+        <Route path="/login" element={<Login />} /> 
       </Routes>
     </Router>
   )
