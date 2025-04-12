@@ -13,3 +13,7 @@ Ważne i kluczowe aspkety:
 Do przeddyskutowania:
 - nicki zamiast imion i nazwisk
 - osoby potwierdzone jako osoby publiczne (bluemark)
+
+
+Zgłaszanie tematów/problemów 
+Weryfikacja Tożsamości 
