@@ -1,0 +1,21 @@
+@media (max-width: 768px) {
+  .search-header {
+    padding: 1rem;
+  }
+
+  .location-title {
+    font-size: 1.25rem;
+  }
+
+  .search-content {
+    padding: 1rem;
+  }
+
+  .search-form {
+    flex-direction: column;
+  }
+
+  .filter-button {
+    width: 100%;
+  }
+}
