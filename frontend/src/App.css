@@ -41,8 +41,8 @@ body {
 }
 
 .header-content {
-  width: 100hv;
-  max-width: 1440px;
+  width: 100vw;
+  /* max-width: 1440p */
   margin: 0 auto;
   padding: 12px 16px;
   display: flex;
