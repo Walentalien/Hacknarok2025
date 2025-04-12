@@ -1,3 +1,102 @@
+/* Global Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+/* Header Styles */
+.header {
+  background-color: #004a99;
+  padding: 10px 20px;
+  color: white;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-left, .header-right {
+  display: flex;
+  align-items: center;
+}
+
+.menu-button {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.logo-section {
+  display: flex;
+  align-items: center;
+}
+
+.logo-text {
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.gov-text {
+  font-weight: bold;
+}
+
+.service-text {
+  font-size: 0.8rem;
+  color: #e6e6e6;
+}
+
+.login-button {
+  background-color: #ffcb00;
+  padding: 8px 16px;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+.eu-flag {
+  width: 30px;
+  height: auto;
+  margin-left: 10px;
+}
+
+/* Banner */
+.yellow-banner {
+  background-color: #ffcb00;
+  padding: 10px;
+}
+
+.banner-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.banner-link {
+  color: #004a99;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Main Content */
+.main-content {
+  padding: 20px;
+}
+
+.content-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Dashboard Grid */
 .dashboard-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -42,6 +141,7 @@
   font-size: 0.875rem;
 }
 
+/* Recent Activity */
 .recent-activity {
   margin-top: 48px;
 }
@@ -58,11 +158,19 @@
   padding: 16px;
 }
 
-@media (max-width: 768px) {
+/* Media Queries for Responsiveness */
+@media (max-width: 1024px) {
+  .header-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .logo-section {
+    margin-bottom: 10px;
+  }
+
   .dashboard-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
-    margin-top: 24px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   }
 
   .dashboard-item {
@@ -70,11 +178,89 @@
   }
 
   .dashboard-item svg {
+    font-size: 40px;
+  }
+
+  .recent-activity h2 {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 10px;
+  }
+
+  .header-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .login-button {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+
+  .yellow-banner {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .dashboard-item {
+    padding: 12px;
+  }
+
+  .dashboard-item svg {
     font-size: 36px;
     margin-bottom: 12px;
   }
 
-  .recent-activity {
-    margin-top: 32px;
+  .recent-activity h2 {
+    font-size: 1.125rem;
   }
-} 
+
+  .activity-list {
+    padding: 12px;
+  }
+}
+
+/* Mobile View */
+@media (max-width: 480px) {
+  .logo-section {
+    text-align: center;
+    margin-bottom: 15px;
+  }
+
+  .gov-text {
+    font-size: 1.2rem;
+  }
+
+  .service-text {
+    font-size: 0.8rem;
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-item h3 {
+    font-size: 1.1rem;
+  }
+
+  .dashboard-item svg {
+    font-size: 32px;
+  }
+
+  .recent-activity {
+    margin-top: 24px;
+  }
+}
+
+.yellow-banner {
+  margin-left: -100px;
+}

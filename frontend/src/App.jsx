@@ -3,8 +3,10 @@ import Home from './pages/Home'
 import Login from './pages/Login'
 import Search from './pages/Search'
 import Profile from './pages/Profile'
+import Discussion from './pages/Discussion'
 import Layout from './components/Layout'
 import './App.css'
+import Landing from './pages/Landing'
 
 function App() {
   const isAuthenticated = () => {
@@ -18,8 +20,10 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
+        {/* Redirect from root (/) to the first discussion page */}
+        <Route path="/" element={<Navigate to="/discussion/1" />} />
+
+        <Route path="/login" element={<Discussion />} />
         <Route path="/home" element={
           <PrivateRoute>
             <Layout>
@@ -41,9 +45,16 @@ function App() {
             </Layout>
           </PrivateRoute>
         } />
+        <Route path="/discussion/:id" element={
+          <PrivateRoute>
+            <Layout>
+              <Discussion />
+            </Layout>
+          </PrivateRoute>
+        } />
       </Routes>
     </Router>
   )
 }
 
-export default App
+export default App;
