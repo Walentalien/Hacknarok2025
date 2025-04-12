@@ -7,30 +7,30 @@ const Footer = () => {
       <div className="footer-container">
         <div className="footer-content">
           <div className="footer-section">
-            <h3>About Us</h3>
+            <h3>O Nas</h3>
             <p>
-              We are dedicated to providing innovative solutions for our users.
+              Jesteśmy polską firmą technologiczną, która tworzy innowacyjne rozwiązania dla naszych klientów.
             </p>
           </div>
           <div className="footer-section">
-            <h3>Quick Links</h3>
+            <h3>Szybkie Linki</h3>
             <ul>
-              <li><a href="/">Home</a></li>
-              <li><a href="/about">About</a></li>
-              <li><a href="/contact">Contact</a></li>
+              <li><a href="/">Strona Główna</a></li>
+              <li><a href="/forum">Forum</a></li>
+              <li><a href="/kontakt">Kontakt</a></li>
             </ul>
           </div>
           <div className="footer-section">
-            <h3>Contact Info</h3>
+            <h3>Kontakt</h3>
             <ul>
-              <li>Email: info@example.com</li>
-              <li>Phone: +1 234 567 890</li>
-              <li>Address: 123 Main St, City</li>
+              <li>Email: kontakt@example.pl</li>
+              <li>Tel: +48 123 456 789</li>
+              <li>Adres: ul. Krakowska 123, 30-001 Kraków</li>
             </ul>
           </div>
         </div>
         <div className="footer-bottom">
-          <p>© 2024 Your Company. All rights reserved.</p>
+          <p>© 2024 Twoja Firma. Wszelkie prawa zastrzeżone.</p>
         </div>
       </div>
     </footer>

@@ -1,0 +1,29 @@
+.user-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.avatar-face {
+  width: 30px;
+  height: 30px;
+  background-color: black;
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.avatar-eyes {
+  width: 20px;
+  height: 6px;
+  background-color: currentColor;
+  border-radius: 3px;
+  position: relative;
+  background-color: white;
+} 
