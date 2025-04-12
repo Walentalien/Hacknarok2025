@@ -9,6 +9,9 @@ Ważne i kluczowe aspkety:
 - dyskusje i wysoka regulacja przez administratorów dyskusji
 - skierowana do organizacji rządowych
 - ważna transprentność
+- archiwizacja
+- ranking na podstawie ilości osób / postów.
+- moderacja brzydkich słów.
 
 Do przeddyskutowania:
 - nicki zamiast imion i nazwisk
