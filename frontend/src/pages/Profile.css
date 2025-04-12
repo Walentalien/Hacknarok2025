@@ -1,4 +1,4 @@
-/* Reset */
+/* Reset and Base */
 body, h1, h2, p {
   margin: 0;
   padding: 0;
@@ -16,8 +16,9 @@ body, h1, h2, p {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px;
+  padding: 15px 20px;
   color: white;
+  flex-wrap: wrap;
 }
 
 .hamburger div {
@@ -46,7 +47,9 @@ body, h1, h2, p {
 
 /* Content */
 .content {
-  padding: 30px;
+  padding: 30px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 h1 {
@@ -57,12 +60,13 @@ h1 {
 
 .main-section {
   display: flex;
+  flex-wrap: wrap;
   gap: 20px;
 }
 
 /* Topics Section */
 .topics {
-  flex: 2;
+  flex: 2 1 600px;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -70,6 +74,7 @@ h1 {
 
 .box {
   border: 1px solid #e9b8c2;
+  background-color: white;
 }
 
 .box-header {
@@ -83,7 +88,6 @@ h1 {
 }
 
 .box-body {
-  background-color: white;
   padding: 15px;
 }
 
@@ -95,7 +99,7 @@ h1 {
 
 /* Map Section */
 .map-section {
-  flex: 1;
+  flex: 1 1 300px;
   background-color: white;
   padding: 20px;
   text-align: center;
@@ -121,4 +125,26 @@ h1 {
   background-repeat: no-repeat;
   background-position: center;
   height: 200px;
+  width: 100%;
+}
+
+/* Responsive */
+@media (max-width: 10px) {
+  .main-section {
+    flex-direction: column;
+  }
+
+  .topics, .map-section {
+    flex: 1 1 100%;
+  }
+
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navbar-right {
+    margin-top: 10px;
+    flex-wrap: wrap;
+  }
 }
