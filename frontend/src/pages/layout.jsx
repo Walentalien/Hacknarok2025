@@ -2,13 +2,12 @@
 import { Outlet } from 'react-router-dom';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
-import './layout.css';
 
 export default function Layout() {
   return (
-    <div className="layout">
+    <div>
       <Navbar />
-      <main className="main-content">
+      <main className="w-4/5 m-auto">
         <Outlet />
       </main>
       <Footer />

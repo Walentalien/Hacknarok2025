@@ -1,7 +1,6 @@
 import React from 'react';
 import ForumPost from '../components/ForumPost';
 import CommentCard from '../components/CommentCard';
-import './forum.css';
 
 const Forum = () => {
   const mainPost = {
@@ -27,22 +26,22 @@ const Forum = () => {
   ];
 
   return (
-    <div className="forum-page">
-      <div className="forum-container">
+    <div className="w-full bg-gray-50 min-h-screen py-8">
+      <div className="w-full mx-auto px-4">
         <ForumPost {...mainPost} />
         
-        <div className="comments-section">
+        <div className="my-8">
           {comments.map((comment, index) => (
             <CommentCard key={index} {...comment} />
           ))}
         </div>
 
-        <div className="comment-input">
+        <div className="bg-white p-4 rounded-md shadow-sm">
           <textarea 
             placeholder="Dodaj komentarz..."
-            className="comment-textarea"
+            className="w-full min-h-24 p-3 border border-sky-50 rounded-sm mb-4 resize-y"
           />
-          <button className="submit-button">wyślij</button>
+          <button className="bg-[#0B0B66] text-white border-none py-3 px-6 rounded-sm cursor-pointer font-semibold hover:outline-2 hover:outline-blue-300">wyślij</button>
         </div>
       </div>
     </div>
