@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import ChatIcon from '@mui/icons-material/Chat';
@@ -11,6 +11,7 @@ const Login = () => {
     username: '',
     password: ''
   });
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -22,7 +23,33 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle login logic here
+    // Mock successful login with any credentials
+    const mockUser = {
+      id: 'mock-user-id',
+      username: loginData.username,
+      email: `${loginData.username}@example.com`,
+      city: 'Warsaw',
+      district: 'Mokotow',
+      isVerified: true,
+      isPublicFigure: false,
+      mObywatelData: {
+        pesel: "12345678901",
+        firstName: loginData.username,
+        lastName: "Kowalski",
+        city: "Warsaw",
+        district: "Mokotow",
+        street: "ul. Przykładowa 1",
+        postalCode: "00-001",
+        isVerified: true
+      }
+    };
+
+    // Store mock data in localStorage
+    localStorage.setItem('token', 'mock-token-123');
+    localStorage.setItem('user', JSON.stringify(mockUser));
+    
+    // Navigate to profile page
+    navigate('/profile');
   };
 
   return (
@@ -39,9 +66,9 @@ const Login = () => {
           <button className="nav-icon-button">
             <ChatIcon />
           </button>
-          <button className="nav-icon-button">
+          <Link to="/profile" className="nav-icon-button">
             <PersonIcon />
-          </button>
+          </Link>
           <Link to="/login" className="login-button active">
             Zaloguj
           </Link>
