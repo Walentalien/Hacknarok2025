@@ -10,12 +10,13 @@ import Messages from './pages/messages';
 import Contact from './pages/contact';
 import { AuthProvider } from './contexts/AuthContext';
 import { useAuth } from './contexts/AuthContext';
-import { AdminProvider } from './context/AdminContext';
-import { ThemeProvider } from './context/ThemeContext';
+import { AdminProvider } from './contexts/AdminContext';
+import { ThemeProvider } from './contexts/ThemeContext';
 import { ToastProvider } from './components/Toast';
 import Register from './pages/Register';
 import Cabinet from './pages/Cabinet';
 import AdminDashboard from './pages/AdminDashboard';
+import Navbar from './components/Navbar';
 
 // Protected Route component
 const ProtectedRoute = ({ children }) => {

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { useAdmin } from '../context/AdminContext';
-import { useAuth } from '../context/AuthContext';
+import { useAdmin } from '../contexts/AdminContext';
+import { useAuth } from '../contexts/AuthContext';
 import { useToast } from '../components/Toast';
 import { Navigate } from 'react-router-dom';
 

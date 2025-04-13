@@ -1,44 +1,38 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
+import { useToast } from '../components/Toast';
 
-const Login = () => {
+export default function Login() {
   const navigate = useNavigate();
+  const { login } = useAuth();
+  const { addToast } = useToast();
+  const [formData, setFormData] = useState({
+    email: '',
+    password: ''
+  });
 
-  const handleLogin = () => {
-    // Mock authentication
-    const mockUser = {
-      id: 'mock-user-id',
-      username: 'jan.kowalski',
-      email: 'jan.kowalski@example.com',
-      city: 'Warsaw',
-      district: 'Mokotow',
-      isVerified: true,
-      isPublicFigure: false,
-      mObywatelData: {
-        pesel: "12345678901",
-        firstName: "Jan",
-        lastName: "Kowalski",
-        city: "Warsaw",
-        district: "Mokotow",
-        street: "ul. Przykładowa 1",
-        postalCode: "00-001"
-      }
-    };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await login(formData);
+      addToast('Login successful!', 'success');
+      navigate('/cabinet');
+    } catch (error) {
+      addToast(error.message || 'Failed to login', 'error');
+    }
+  };
 
-    // Store mock token and user data
-    localStorage.setItem('token', 'mock-jwt-token');
-    localStorage.setItem('user', JSON.stringify(mockUser));
-    
-    // Navigate to personal cabinet
-    navigate('/personal-cabinet');
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
   };
 
   return (
     <div className="min-h-screen flex flex-col">
-      {/* Main content */}
       <div className="flex-1 flex items-center justify-center p-4">
         <div className="p-8 w-full max-w-md">
           <div className="text-center space-y-6">
@@ -52,19 +46,48 @@ const Login = () => {
                 </svg>
               </div>
             </div>
-            
+
             {/* Subtitle */}
             <p className="text-gray-600 text-sm">
               użyj profilu zaufanego
             </p>
 
-            {/* Login button */}
-            <button 
-              onClick={handleLogin}
-              className="w-full bg-[#0B0B66] text-white py-3 text-lg font-medium hover:bg-[#0B0B88] transition-colors"
-            >
-              Zaloguj
-            </button>
+            {/* Hidden form for email/password */}
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+                className="w-full px-3 py-2 border border-gray-300 rounded-md hidden"
+                placeholder="Email"
+              />
+              <input
+                type="password"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+                required
+                className="w-full px-3 py-2 border border-gray-300 rounded-md hidden"
+                placeholder="Password"
+              />
+              
+              {/* Login button */}
+              <button
+                type="submit"
+                className="w-full bg-[#0B0B66] text-white py-3 text-lg font-medium hover:bg-[#0B0B88] transition-colors"
+              >
+                Zaloguj
+              </button>
+
+              <button
+  type="submit"
+  className="w-full bg-[#0B0B66] text-white py-3 text-lg font-medium hover:bg-[#0B0B88] transition-colors"
+>
+  Zaloguj
+</button>
+            </form>
 
             {/* Description text */}
             <p className="text-gray-600 text-sm text-center max-w-sm mx-auto">
@@ -75,6 +98,4 @@ const Login = () => {
       </div>
     </div>
   );
-};
-
-export default Login; 
+} 
