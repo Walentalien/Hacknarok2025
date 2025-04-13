@@ -1,8 +1,6 @@
 import React from 'react';
-import TopNav from '../components/TopNav';
 import CategoryNav from '../components/CategoryNav';
 import ForumPostPreview from '../components/ForumPostPreview';
-import './home.css';
 
 const Home = () => {
   const posts = [
@@ -25,7 +23,6 @@ const Home = () => {
 
   return (
     <div className="min-h-screen bg-[#f8f9fa]">
-      <TopNav />
       <main className="mx-auto p-4">
         <CategoryNav />
         <div className="mt-4">
