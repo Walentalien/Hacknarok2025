@@ -1,14 +1,13 @@
 import React from 'react';
-import './UserAvatar.css';
 
 const UserAvatar = ({ backgroundColor = '#FFD700' }) => {
   return (
     <div 
-      className="user-avatar"
+      className="w-[50px] h-[50px] rounded-full flex items-center justify-center overflow-hidden"
       style={{ backgroundColor }}
     >
-      <div className="avatar-face">
-        <div className="avatar-eyes"></div>
+      <div className="w-[30px] h-[30px] bg-black rounded-full relative flex justify-center items-center">
+        <div className="w-[20px] h-[6px] bg-white rounded-[3px] relative"></div>
       </div>
     </div>
   );
