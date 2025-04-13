@@ -1,33 +1,54 @@
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import Home from './pages/home'
 import Forum from './pages/forum';
 import Login from './pages/login';
 import Layout from './pages/layout';
+import PersonalCabinet from './pages/PersonalCabinet';
+import { AuthProvider } from './contexts/AuthContext';
+import { useAuth } from './contexts/AuthContext';
 
+// Protected Route component
+const ProtectedRoute = ({ children }) => {
+  const { isAuthenticated } = useAuth();
+  
+  if (!isAuthenticated) {
+    return <Navigate to="/login" />;
+  }
+  
+  return children;
+};
 
 function App() {
-
-  // todo
-  const isAuthenticated = () => {
-    return localStorage.getItem('token') !== null;
-  };
-
-  const PrivateRoute = ({ children }) => {
-    return isAuthenticated() ? children : <Navigate to="/login" />;
-  };
-
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Layout searchOpen = { true } />}>
-          <Route index element={<Home />} />        
-          <Route path="/forum" element={<Forum />} /> 
-        </Route>
-        <Route path="/login" element={<Layout searchOpen = { false } />}>
-          <Route index element={<Login />} />        
-        </Route>
-      </Routes>
-    </Router>
+    <AuthProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />        
+            <Route path="/forum" element={<Forum />} /> 
+            <Route path="/forum/post/:id" element={<Forum />} />
+            <Route 
+              path="/forum/create" 
+              element={
+                <ProtectedRoute>
+                  <Forum />
+                </ProtectedRoute>
+              } 
+            />
+            <Route path="login" element={<Login />} />
+            <Route 
+              path="personal-cabinet" 
+              element={
+                <ProtectedRoute>
+                  <PersonalCabinet />
+                </ProtectedRoute>
+              } 
+            />
+          </Route>
+        </Routes>
+      </Router>
+    </AuthProvider>
   )
 }
 

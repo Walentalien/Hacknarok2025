@@ -2,6 +2,7 @@ import React from 'react';
 import UserAvatar from './UserAvatar';
 import Rating from './Rating';
 import CommentCard from './CommentCard';
+import { Link } from 'react-router-dom';
 
 const ForumPostPreview = ({ title, content, score, featuredComment }) => {
   return (
@@ -14,42 +15,38 @@ const ForumPostPreview = ({ title, content, score, featuredComment }) => {
         <Rating score={score} />
       </div>
 
-  
       {featuredComment ? (
-
         <div className="grid grid-cols-[2fr_1fr]">
-
           <div className='p-10'>
             <div className='outline outline-gray-400'>
-            <CommentCard author={featuredComment.author} content={featuredComment.content} score={featuredComment.score} backgroundColor={featuredComment.avatarColor} />
+              <CommentCard author={featuredComment.author} content={featuredComment.content} score={featuredComment.score} backgroundColor={featuredComment.avatarColor} />
             </div>
           </div>
 
-          
-
-
           <div className="grid grid-rows-2 justify-items-center items-center p-10">
-            <button className="px-4 py-2 bg-[#0B0B66] text-white w-fit h-fit font-medium hover:outline hover:outline-blue-300 transition-colors">
+            <Link 
+              to="/forum"
+              className="px-4 py-2 bg-[#0B0B66] text-white w-fit h-fit font-medium hover:outline hover:outline-blue-300 transition-colors"
+            >
               Przejdź do tematu
-            </button>
+            </Link>
             <button className="px-4 py-2 border border-gray-400 w-fit h-fit font-medium hover:border-blue-300 transition-colors">
               Dodaj do moich
             </button>
           </div>
-          </div>
-
-         
+        </div>
       ) : (
-      
-      <div className="grid grid-cols-2 justify-items-center items-center p-10">
-            <button className="px-4 py-2 bg-[#0B0B66] text-white w-fit h-fit font-medium hover:outline hover:outline-blue-300 transition-colors">
-              Przejdź do tematu
-            </button>
-            <button className="px-4 py-2 border border-gray-400 w-fit h-fit font-medium hover:border-blue-300 transition-colors">
-              Dodaj do moich
-            </button>
-          </div>
-      
+        <div className="grid grid-cols-2 justify-items-center items-center p-10">
+          <Link 
+            to="/forum"
+            className="px-4 py-2 bg-[#0B0B66] text-white w-fit h-fit font-medium hover:outline hover:outline-blue-300 transition-colors"
+          >
+            Przejdź do tematu
+          </Link>
+          <button className="px-4 py-2 border border-gray-400 w-fit h-fit font-medium hover:border-blue-300 transition-colors">
+            Dodaj do moich
+          </button>
+        </div>
       )}
     </div>
   );

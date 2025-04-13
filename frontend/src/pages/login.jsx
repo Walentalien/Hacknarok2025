@@ -1,8 +1,41 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+    // Mock authentication
+    const mockUser = {
+      id: 'mock-user-id',
+      username: 'jan.kowalski',
+      email: 'jan.kowalski@example.com',
+      city: 'Warsaw',
+      district: 'Mokotow',
+      isVerified: true,
+      isPublicFigure: false,
+      mObywatelData: {
+        pesel: "12345678901",
+        firstName: "Jan",
+        lastName: "Kowalski",
+        city: "Warsaw",
+        district: "Mokotow",
+        street: "ul. Przykładowa 1",
+        postalCode: "00-001"
+      }
+    };
+
+    // Store mock token and user data
+    localStorage.setItem('token', 'mock-jwt-token');
+    localStorage.setItem('user', JSON.stringify(mockUser));
+    
+    // Navigate to personal cabinet
+    navigate('/personal-cabinet');
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
       {/* Main content */}
@@ -26,7 +59,10 @@ const Login = () => {
             </p>
 
             {/* Login button */}
-            <button className="w-full bg-[#0B0B66] text-white py-3 text-lg font-medium hover:bg-[#0B0B88] transition-colors">
+            <button 
+              onClick={handleLogin}
+              className="w-full bg-[#0B0B66] text-white py-3 text-lg font-medium hover:bg-[#0B0B88] transition-colors"
+            >
               Zaloguj
             </button>
 
