@@ -28,6 +28,9 @@ function App() {
           <Route path="/chat" element={<Chat />} /> 
           <Route path="/user" element={<User />} />           
         </Route>
+        <Route path="/" element={<Layout searchOpen = { false } iconsOpen={false}/>}>
+          <Route path="/login" element={<Login />} />          
+        </Route>
   
 
       </Routes>
