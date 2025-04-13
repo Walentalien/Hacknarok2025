@@ -53,12 +53,12 @@ export default function Chat() {
       <div className="grid grid-cols-[250px_1fr] gap-4 border border-gray-300 p-4">
         
         <div className="flex flex-col gap-2">
-          {[1, 2, 3, 4, 5, 6].map((item) => (
+          {[1].map((item) => (
             <div key={item} className="flex items-center border border-blue-900 p-2 rounded cursor-pointer hover:bg-gray-200">
               
               
               <img
-                src="https://via.placeholder.com/50x50/ff0/000?text=%F0%9F%91%BC"
+                src="https://placehold.co/600x600"
                 alt="Avatar"
                 className="w-12 h-12 mr-3"
               />

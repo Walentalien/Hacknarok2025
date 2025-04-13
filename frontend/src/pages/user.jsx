@@ -7,7 +7,7 @@ export default function User() {
           {/* Avatar i imię */}
           <div className="flex flex-col items-center">
             <img
-              src="https://via.placeholder.com/80"
+              src="https://placehold.co/600x600"
               alt="Avatar"
               className="w-24 h-24 rounded-full border"
             />
@@ -36,7 +36,7 @@ export default function User() {
               <div key={item} className="flex items-start border border-gray-400 p-3 rounded">
                 {/* Avatar */}
                 <img
-                  src="https://via.placeholder.com/50x50/ff0/000?text=%F0%9F%91%BC"
+                  src="https://placehold.co/600x600"
                   alt="User avatar"
                   className="w-14 h-14 mr-4"
                 />
