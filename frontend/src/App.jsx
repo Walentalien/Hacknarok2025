@@ -3,7 +3,8 @@ import Home from './pages/home'
 import Forum from './pages/forum';
 import Login from './pages/login';
 import Layout from './pages/layout';
-
+import User from './pages/user';
+import Chat from './pages/chat';
 
 function App() {
 
@@ -19,13 +20,16 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Layout searchOpen = { true } />}>
+        <Route path="/" element={<Layout searchOpen = { true } iconsOpen={true}/>}>
           <Route index element={<Home />} />        
           <Route path="/forum/:id" element={<Forum />} />
         </Route>
-        <Route path="/login" element={<Layout searchOpen = { false } />}>
-          <Route index element={<Login />} />        
+        <Route path="/" element={<Layout searchOpen = { false } iconsOpen={true}/>}>
+          <Route path="/chat" element={<Chat />} /> 
+          <Route path="/user" element={<User />} />           
         </Route>
+  
+
       </Routes>
     </Router>
   )
