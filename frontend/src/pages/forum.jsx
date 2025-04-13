@@ -26,7 +26,7 @@ const Forum = () => {
   ];
 
   return (
-    <div className="w-full bg-gray-50 min-h-screen py-8">
+    <div className="w-full min-h-screen py-8">
       <div className="w-full mx-auto px-4">
         <ForumPost {...mainPost} />
         
