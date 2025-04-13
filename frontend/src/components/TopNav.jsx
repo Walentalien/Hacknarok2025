@@ -3,8 +3,8 @@ import './TopNav.css';
 
 const TopNav = () => {
   return (
-    <nav className="top-nav">
-      <button className="menu-button">
+    <nav className="flex items-center gap-4 py-4 px-2 bg-[#0B0B66] text-white">
+      <button className="bg-none border-none">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M3 12H21M3 6H21M3 18H21" stroke="white" strokeWidth="2" strokeLinecap="round"/>
         </svg>

@@ -24,11 +24,11 @@ const Home = () => {
   ];
 
   return (
-    <div className="home-page">
+    <div className="min-h-screen bg-[#f8f9fa]">
       <TopNav />
-      <main className="forum-main">
+      <main className="mx-auto p-4">
         <CategoryNav />
-        <div className="posts-list">
+        <div className="mt-4">
           {posts.map((post, index) => (
             <ForumPostPreview key={index} {...post} />
           ))}

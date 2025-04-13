@@ -41,7 +41,7 @@ const Forum = () => {
             placeholder="Dodaj komentarz..."
             className="w-full min-h-24 p-3 border border-sky-50 rounded-sm mb-4 resize-y"
           />
-          <button className="bg-[#0B0B66] text-white border-none py-3 px-6 rounded-sm cursor-pointer font-semibold hover:outline-2 hover:outline-blue-300">wyślij</button>
+          <button className="bg-[#0B0B66] text-white border-none p-6 px-6 rounded-sm cursor-pointer font-semibold hover:outline-2 hover:outline-blue-300">wyślij</button>
         </div>
       </div>
     </div>
