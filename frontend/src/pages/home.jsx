@@ -5,6 +5,7 @@ import ForumPostPreview from '../components/ForumPostPreview';
 const Home = () => {
   const posts = [
     {
+      id: '1',
       title: "Chodnik na ulicy Mikołaja Kopernika - łatanie dziur",
       content: "Czy wiadomo coś na temat planowanych prac naprawczych chodnika przy ulicy Mikołaja Kopernika? Chodnik jest w bardzo złym stanie – pełen dziur, pęknięć i nierówności, co stanowi realne zagrożenie, zwłaszcza dla osób starszych i dzieci...",
       score: "54/23",
@@ -16,6 +17,7 @@ const Home = () => {
       }
     },
     {
+      id: '2',
       title: "Sadzenie drzew przy chodniku w ciągu ulicy Pięknej",
       content: "Propozycja zazieleniania naszej okolicy poprzez nasadzenia drzew wzdłuż chodnika...",
       score: "32/5"
@@ -31,7 +33,7 @@ const Home = () => {
           </div>
           <div >
             {posts.map((post, index) => (
-              <ForumPostPreview key={index} {...post} />
+              <ForumPostPreview key={post.id} {...post} />
             ))}
           </div>
         

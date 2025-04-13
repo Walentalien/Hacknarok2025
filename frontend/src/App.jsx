@@ -5,6 +5,9 @@ import Forum from './pages/forum';
 import Login from './pages/login';
 import Layout from './pages/layout';
 import PersonalCabinet from './pages/PersonalCabinet';
+import Search from './pages/search';
+import Messages from './pages/messages';
+import Contact from './pages/contact';
 import { AuthProvider } from './contexts/AuthContext';
 import { useAuth } from './contexts/AuthContext';
 
@@ -36,9 +39,19 @@ function App() {
                 </ProtectedRoute>
               } 
             />
-            <Route path="login" element={<Login />} />
+            <Route path="/search" element={<Search />} />
             <Route 
-              path="personal-cabinet" 
+              path="/messages" 
+              element={
+                <ProtectedRoute>
+                  <Messages />
+                </ProtectedRoute>
+              } 
+            />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/login" element={<Login />} />
+            <Route 
+              path="/personal-cabinet" 
               element={
                 <ProtectedRoute>
                   <PersonalCabinet />
