@@ -1,13 +1,15 @@
 import React from 'react';
 import ForumPost from '../components/ForumPost';
 import CommentCard from '../components/CommentCard';
+import { useParams} from 'react-router-dom';
 
 
-[
+const posts=[
   {
     "title": "Chodnik na ulicy Mikołaja Kopernika - łatanie dziur",
     "content": "Czy wiadomo coś na temat planowanych prac naprawczych chodnika przy ulicy Mikołaja Kopernika? Chodnik jest w bardzo złym stanie – pełen dziur, pęknięć i nierówności, co stanowi realne zagrożenie, zwłaszcza dla osób starszych i dzieci...",
     "author": "Marek Nowak",
+    "id":0,
     "backgroundColor": "#7CFC00",
     "comments": [
       {
@@ -46,6 +48,7 @@ import CommentCard from '../components/CommentCard';
     "title": "Brak oświetlenia na ulicy Zielonej",
     "content": "Wieczorem na ulicy Zielonej panują zupełne ciemności. Czy ktoś wie, czy planowane jest zamontowanie latarni? Brak światła zwiększa ryzyko wypadków i sprawia, że czujemy się niebezpiecznie.",
     "author": "Anna Wiśniewska",
+    "id":1,
     "backgroundColor": "#ADD8E6",
     "comments": [
       {
@@ -72,6 +75,7 @@ import CommentCard from '../components/CommentCard';
     "title": "Zarośnięty plac zabaw na osiedlu Leśnym",
     "content": "Plac zabaw na osiedlu Leśnym jest praktycznie nieużywalny – trawa po pas, zniszczone urządzenia. Dzieci nie mają gdzie się bawić!",
     "author": "Karolina Duda",
+    "id":2,
     "backgroundColor": "#D2691E",
     "comments": [
       {
@@ -110,6 +114,7 @@ import CommentCard from '../components/CommentCard';
     "title": "Uszkodzone ławki w parku miejskim",
     "content": "Większość ławek w naszym parku miejskim jest połamana lub ma wystające gwoździe. Czy są planowane jakieś naprawy?",
     "author": "Łukasz Król",
+    "id":3,
     "backgroundColor": "#FFD700",
     "comments": [
       {
@@ -154,6 +159,7 @@ import CommentCard from '../components/CommentCard';
     "title": "Problem z parkowaniem na ulicy Lipowej",
     "content": "Coraz trudniej zaparkować na ulicy Lipowej. Czy są jakieś plany rozbudowy parkingów lub zmiany organizacji ruchu?",
     "author": "Renata Urban",
+    "id":4,
     "backgroundColor": "#8B0000",
     "comments": [
       {
@@ -192,6 +198,7 @@ import CommentCard from '../components/CommentCard';
     "title": "Hałas nocny z nowej restauracji",
     "content": "Nowa restauracja przy rynku organizuje głośne imprezy. Czy są jakieś przepisy ograniczające hałas po 22:00?",
     "author": "Kacper Marek",
+    "id":5,
     "backgroundColor": "#90EE90",
     "comments": [
       {
@@ -236,6 +243,7 @@ import CommentCard from '../components/CommentCard';
     "title": "Nowa ścieżka rowerowa przy rzece",
     "content": "Czy ktoś korzystał już z nowej ścieżki rowerowej przy rzece? Jakie są wasze wrażenia?",
     "author": "Maria Drozd",
+    "id":6,
     "backgroundColor": "#D2691E",
     "comments": [
       {
@@ -274,6 +282,7 @@ import CommentCard from '../components/CommentCard';
     "title": "Zanieczyszczona woda w fontannie",
     "content": "Fontanna na rynku jest bardzo brudna. Czy miasto planuje jej czyszczenie?",
     "author": "Mariusz Polak",
+    "id":7,
     "backgroundColor": "#7CFC00",
     "comments": [
       {
@@ -306,6 +315,7 @@ import CommentCard from '../components/CommentCard';
     "title": "Problemy z wywozem śmieci na osiedlu Słonecznym",
     "content": "Śmieci są wywożone nieregularnie na osiedlu Słonecznym. Ktoś zgłaszał to już do administracji?",
     "author": "Aneta Kaczmarek",
+    "id":8,
     "backgroundColor": "#8B0000",
     "comments": [
       {
@@ -356,6 +366,7 @@ import CommentCard from '../components/CommentCard';
     "title": "Dziury w drodze przy szkole podstawowej",
     "content": "Droga przy szkole podstawowej jest pełna dziur. To niebezpieczne, zwłaszcza dla dzieci.",
     "author": "Tomasz Bąk",
+    "id":9,
     "backgroundColor": "#E6E6FA",
     "comments": [
       {
@@ -382,6 +393,7 @@ import CommentCard from '../components/CommentCard';
     "title": "Zamknięcie przejścia dla pieszych na ulicy Warszawskiej",
     "content": "Dlaczego zamknięto przejście dla pieszych na Warszawskiej? Teraz trzeba nadrabiać kilkaset metrów.",
     "author": "Joanna Kot",
+    "id":10,
     "backgroundColor": "#CD5C5C",
     "comments": [
       {
@@ -426,6 +438,7 @@ import CommentCard from '../components/CommentCard';
     "title": "Nowy rozkład jazdy autobusów",
     "content": "Ktoś już korzystał z nowego rozkładu jazdy autobusów? Są jakieś zmiany na lepsze?",
     "author": "Paweł Zawada",
+    "id":11,
     "backgroundColor": "#ADD8E6",
     "comments": [
       {
@@ -458,6 +471,7 @@ import CommentCard from '../components/CommentCard';
     "title": "Brak koszy na śmieci na deptaku",
     "content": "Na nowym deptaku nie zamontowano koszy na śmieci. Efekt: wszędzie papierki i butelki.",
     "author": "Iwona Pawlak",
+    "id":12,
     "backgroundColor": "#DAA520",
     "comments": [
       {
@@ -490,6 +504,7 @@ import CommentCard from '../components/CommentCard';
     "title": "Problemy z sygnalizacją świetlną",
     "content": "Sygnalizacja świetlna na skrzyżowaniu Jana Pawła II i Mickiewicza często się psuje. Czy planowane są naprawy?",
     "author": "Ewelina Sobczak",
+    "id":13,
     "backgroundColor": "#90EE90",
     "comments": [
       {
@@ -516,6 +531,7 @@ import CommentCard from '../components/CommentCard';
     "title": "Długie kolejki do lekarza w przychodni",
     "content": "Ostatnio czekałam 3 godziny na wizytę u lekarza. Czy jest planowane zwiększenie liczby przyjęć?",
     "author": "Grzegorz Nowicki",
+    "id":14,
     "backgroundColor": "#4682B4",
     "comments": [
       {
@@ -549,6 +565,7 @@ import CommentCard from '../components/CommentCard';
     "content": "Super, że posadzili nowe drzewa w parku! Ktoś wie, jakie to gatunki?",
     "author": "Adrian Malinowski",
     "backgroundColor": "#DAA520",
+    "id":15,
     "comments": [
       {
         "author": "Renata Urban",
@@ -592,6 +609,7 @@ import CommentCard from '../components/CommentCard';
     "title": "Problem z dostępnością placu zabaw dla niepełnosprawnych",
     "content": "Plac zabaw nie ma żadnych udogodnień dla dzieci niepełnosprawnych. Czy coś z tym zrobią?",
     "author": "Sylwia Tomaszewska",
+    "id":16,
     "backgroundColor": "#4682B4",
     "comments": [
       {
@@ -624,6 +642,7 @@ import CommentCard from '../components/CommentCard';
     "title": "Przepełnione autobusy w godzinach szczytu",
     "content": "W godzinach szczytu autobusy są przepełnione. Kiedyś były dodatkowe kursy – teraz brak.",
     "author": "Michał Baran",
+    "id":17,
     "backgroundColor": "#FFD700",
     "comments": [
       {
@@ -674,6 +693,7 @@ import CommentCard from '../components/CommentCard';
     "title": "Brak oznakowania przejazdu kolejowego",
     "content": "Przejazd kolejowy na ulicy Kolejowej nie ma oznakowania świetlnego. To bardzo niebezpieczne!",
     "author": "Kinga Jasińska",
+    "id":18,
     "backgroundColor": "#4682B4",
     "comments": [
       {
@@ -700,6 +720,7 @@ import CommentCard from '../components/CommentCard';
     "title": "Rozkopane chodniki na ulicy Kwiatowej",
     "content": "Chodniki na ulicy Kwiatowej są rozkopane już od miesięcy. Kiedy wreszcie skończą remont?",
     "author": "Daniel Wiatr",
+    "id":19,
     "backgroundColor": "#E0E0E0",
     "comments": [
       {
@@ -727,34 +748,17 @@ import CommentCard from '../components/CommentCard';
 
 
 const Forum = () => {
-  const mainPost = {
-    title: "Chodnik na ulicy Mikołaja Kopernika - łatanie dziur",
-    content: "Czy wiadomo coś na temat planowanych prac naprawczych chodnika przy ulicy Mikołaja Kopernika? Chodnik jest w bardzo złym stanie – pełen dziur, pęknięć i nierówności, co stanowi realne zagrożenie, zwłaszcza dla osób starszych i dzieci. Korzystają z niego codziennie piesi, a w takim stanie trudno bezpiecznie się poruszać. Czy ktoś już to zgłaszał do urzędu lub wie, czy są planowane jakieś działania w tej sprawie?",
-    author: "Marek Nowak",
-    backgroundColor: "#FFD700",
-    comments:[ {
-      author: "Maria Drozd",
-      content: "Też zauważyłem ten problem, ciężko tamtędy przejść z wózkiem. Może petycja coś by dała?",
-      score: "88/13",
-      backgroundColor: "#E0E0E0"
-    },
-    {
-      author: "Mariusz Polak",
-      content: "Słyszałem, że mają coś robić w wakacje, ale nie wiem, czy chodziło o chodnik czy tylko drogę.",
-      score: "54/23",
-      backgroundColor: "#8B4513"
-    }]
-  };
-
-
+     const {id}=useParams()
+     
 
   return (
+  
     <div className="w-full min-h-screen py-8">
       <div className="w-full mx-auto px-4">
-        <ForumPost {...mainPost }   />
+        <ForumPost {...posts[id] }   />
         
         <div>
-          {mainPost.comments.map((comment, index) => (
+          {posts[id].comments.map((comment, index) => (
             <CommentCard key={index} {...comment} />
           ))}
         </div>
