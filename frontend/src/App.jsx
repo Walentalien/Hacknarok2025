@@ -10,6 +10,12 @@ import Messages from './pages/messages';
 import Contact from './pages/contact';
 import { AuthProvider } from './contexts/AuthContext';
 import { useAuth } from './contexts/AuthContext';
+import { AdminProvider } from './context/AdminContext';
+import { ThemeProvider } from './context/ThemeContext';
+import { ToastProvider } from './components/Toast';
+import Register from './pages/Register';
+import Cabinet from './pages/Cabinet';
+import AdminDashboard from './pages/AdminDashboard';
 
 // Protected Route component
 const ProtectedRoute = ({ children }) => {
@@ -24,44 +30,53 @@ const ProtectedRoute = ({ children }) => {
 
 function App() {
   return (
-    <AuthProvider>
-      <Router>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<Home />} />        
-            <Route path="/forum" element={<Forum />} /> 
-            <Route path="/forum/post/:id" element={<Forum />} />
-            <Route 
-              path="/forum/create" 
-              element={
-                <ProtectedRoute>
-                  <Forum />
-                </ProtectedRoute>
-              } 
-            />
-            <Route path="/search" element={<Search />} />
-            <Route 
-              path="/messages" 
-              element={
-                <ProtectedRoute>
-                  <Messages />
-                </ProtectedRoute>
-              } 
-            />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/login" element={<Login />} />
-            <Route 
-              path="/personal-cabinet" 
-              element={
-                <ProtectedRoute>
-                  <PersonalCabinet />
-                </ProtectedRoute>
-              } 
-            />
-          </Route>
-        </Routes>
-      </Router>
-    </AuthProvider>
+    <Router>
+      <AuthProvider>
+        <AdminProvider>
+          <ThemeProvider>
+            <ToastProvider>
+              <Routes>
+                <Route path="/" element={<Layout />}>
+                  <Route index element={<Home />} />        
+                  <Route path="/forum" element={<Forum />} /> 
+                  <Route path="/forum/post/:id" element={<Forum />} />
+                  <Route 
+                    path="/forum/create" 
+                    element={
+                      <ProtectedRoute>
+                        <Forum />
+                      </ProtectedRoute>
+                    } 
+                  />
+                  <Route path="/search" element={<Search />} />
+                  <Route 
+                    path="/messages" 
+                    element={
+                      <ProtectedRoute>
+                        <Messages />
+                      </ProtectedRoute>
+                    } 
+                  />
+                  <Route path="/contact" element={<Contact />} />
+                  <Route path="/login" element={<Login />} />
+                  <Route path="register" element={<Register />} />
+                  <Route 
+                    path="/personal-cabinet" 
+                    element={
+                      <ProtectedRoute>
+                        <PersonalCabinet />
+                      </ProtectedRoute>
+                    } 
+                  />
+                  <Route path="cabinet" element={<Cabinet />} />
+                  <Route path="admin" element={<AdminDashboard />} />
+                </Route>
+              </Routes>
+            </ToastProvider>
+          </ThemeProvider>
+        </AdminProvider>
+      </AuthProvider>
+    </Router>
   )
 }
 
