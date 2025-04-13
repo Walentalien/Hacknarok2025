@@ -1,7 +1,10 @@
 import React from 'react';
 import CategoryNav from '../components/CategoryNav';
 import ForumPostPreview from '../components/ForumPostPreview';
+
 import { useEffect,useState } from 'react';
+
+import PopupForm from '../components/PopUpForm';
 
 const Home = () => {
   const posts = [
@@ -288,12 +291,17 @@ const Home = () => {
 
   },[category]);
 
+  const handleForumCreate = () =>{
+
+  }
+
+
   return (
     <div className="min-h-screen">
         <CategoryNav f={f}  />
         <div className="grid grid-cols-[200px_1fr] gap-4 mt-4">
           <div className="bg-white p-2">
-            jak bede miał siły dorobię
+            <PopupForm />
           </div>
           <div >
             {curPosts.map((post, index) => (
