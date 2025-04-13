@@ -11,6 +11,7 @@ const Home = () => {
       featuredComment: {
         author: "Marek Nowak",
         content: "Zgłaszałem to do urzędu kilka miesięcy temu, ale jak na razie cisza. Może warto ponowić zgłoszenie grupowo?",
+        score: "32/1",
         avatarColor: "#FFD700"
       }
     },
@@ -22,15 +23,19 @@ const Home = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[#f8f9fa]">
-      <main className="mx-auto p-4">
+    <div className="min-h-screen">
         <CategoryNav />
-        <div className="mt-4">
-          {posts.map((post, index) => (
-            <ForumPostPreview key={index} {...post} />
-          ))}
+        <div className="grid grid-cols-[200px_1fr] gap-4 mt-4">
+          <div className="bg-white p-2">
+            jak bede miał siły dorobię
+          </div>
+          <div >
+            {posts.map((post, index) => (
+              <ForumPostPreview key={index} {...post} />
+            ))}
+          </div>
+        
         </div>
-      </main>
     </div>
   );
 };

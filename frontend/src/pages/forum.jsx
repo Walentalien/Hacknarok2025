@@ -30,19 +30,19 @@ const Forum = () => {
       <div className="w-full mx-auto px-4">
         <ForumPost {...mainPost} />
         
-        <div className="my-8">
+        <div>
           {comments.map((comment, index) => (
             <CommentCard key={index} {...comment} />
           ))}
         </div>
 
-        <div className="bg-white p-4 rounded-md shadow-sm">
+        <div className="bg-white p-4">
           <textarea 
             placeholder="Dodaj komentarz..."
-            className="w-full min-h-24 p-3 border border-sky-50 rounded-sm mb-4 resize-y"
+            className="w-full min-h-24 p-3 border mb-4 resize-y"
           />
           <div className="flex justify-end">
-            <button className="bg-[#0B0B66] text-white border-none p-3 px-6 rounded-sm cursor-pointer font-semibold hover:outline-2 hover:outline-blue-300">wyślij</button>
+            <button className="bg-[#0B0B66] text-white border-none p-3 px-6 cursor-pointer font-semibold hover:outline-2 hover:outline-blue-300">wyślij</button>
           </div >
         </div>
       </div>

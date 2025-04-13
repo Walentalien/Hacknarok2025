@@ -3,7 +3,7 @@ import UserAvatar from './UserAvatar';
 
 const ForumPost = ({ title, content, author, backgroundColor }) => {
   return (
-    <div className="bg-white p-8 mb-8 shadow-sm">
+    <div className="bg-white p-8 mb-2">
       <div className="flex justify-between items-center mb-6">
         <div className="flex items-center gap-4">
           <UserAvatar backgroundColor={backgroundColor} />
@@ -11,8 +11,8 @@ const ForumPost = ({ title, content, author, backgroundColor }) => {
         </div>
       </div>
       <div className="space-y-4">
-        <h1 className="text-2xl text-gray-900 m-0">{title}</h1>
-        <p className="text-gray-600 leading-relaxed">{content}</p>
+        <h1 className="text-2xl text-gray-800 m-0 ml-1">{title}</h1>
+        <p className="text-gray-700 leading-relaxed mt-1">{content}</p>
       </div>
     </div>
   );

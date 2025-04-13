@@ -4,12 +4,10 @@ import Footer from '../components/Footer';
 
 const Login = () => {
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50">
-      <Navbar />
-
+    <div className="min-h-screen flex flex-col">
       {/* Main content */}
       <div className="flex-1 flex items-center justify-center p-4">
-        <div className="bg-white p-8 border border-gray-200 rounded-lg w-full max-w-md">
+        <div className="p-8 w-full max-w-md">
           <div className="text-center space-y-6">
             {/* Login logo and text */}
             <div className="flex justify-center items-center gap-2">
@@ -28,7 +26,7 @@ const Login = () => {
             </p>
 
             {/* Login button */}
-            <button className="w-full bg-[#2D0066] text-white py-3 text-lg font-medium hover:bg-[#250052] transition-colors">
+            <button className="w-full bg-[#0B0B66] text-white py-3 text-lg font-medium hover:bg-[#0B0B88] transition-colors">
               Zaloguj
             </button>
 
@@ -39,8 +37,6 @@ const Login = () => {
           </div>
         </div>
       </div>
-
-      <Footer />
     </div>
   );
 };
