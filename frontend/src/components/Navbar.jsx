@@ -6,14 +6,15 @@ import { useNavigate } from 'react-router-dom';
 const Navbar = ( {searchOpen, iconsOpen} ) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchText, setSearchText] = useState('');
-  const is_authenticated = true; // todo
+  const [is_authenticated, setAuth] = useState('False')
   const navigate = useNavigate();
 
   const handleLogin = () => {
     if (is_authenticated){
-      // handle logout 
+      setAuth(!is_authenticated);
     }else{
       navigate('/login'); 
+      setAuth(!is_authenticated)
     }
   };
 

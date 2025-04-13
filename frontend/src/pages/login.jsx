@@ -1,8 +1,13 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+    const navigate = useNavigate();
+  const handleLogin = () => {
+    navigate('/')
+  }
   return (
     <div className="min-h-screen flex flex-col">
       {/* Main content */}
@@ -11,7 +16,7 @@ const Login = () => {
           <div className="text-center space-y-6">
             {/* Login logo and text */}
             <div className="flex justify-center items-center gap-2">
-              <h1 className="text-4xl font-light">Login</h1>
+              <h1 className="text-4xl font-light">Login</h1>      
               <div className="relative">
                 <svg className="w-10 h-10" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M15 12L25 20L15 28" stroke="red" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -26,7 +31,9 @@ const Login = () => {
             </p>
 
             {/* Login button */}
-            <button className="w-full bg-[#0B0B66] text-white py-3 text-lg font-medium hover:bg-[#0B0B88] transition-colors">
+            <button className="w-full bg-[#0B0B66] text-white py-3 text-lg font-medium hover:bg-[#0B0B88] transition-colors"
+            onClick={handleLogin}
+            >
               Zaloguj
             </button>
 
