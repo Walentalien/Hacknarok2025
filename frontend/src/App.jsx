@@ -21,7 +21,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout searchOpen = { true } />}>
           <Route index element={<Home />} />        
-          <Route path="/forum" element={<Forum />} /> 
+          <Route path="/forum/:id" element={<Forum />} />
         </Route>
         <Route path="/login" element={<Layout searchOpen = { false } />}>
           <Route index element={<Login />} />        

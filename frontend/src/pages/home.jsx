@@ -8,6 +8,7 @@ const Home = () => {
       title: "Chodnik na ulicy Mikołaja Kopernika - łatanie dziur",
       content: "Czy wiadomo coś na temat planowanych prac naprawczych chodnika przy ulicy Mikołaja Kopernika? Chodnik jest w bardzo złym stanie – pełen dziur, pęknięć i nierówności, co stanowi realne zagrożenie, zwłaszcza dla osób starszych i dzieci...",
       score: "54/23",
+      id:1,
       featuredComment: {
         author: "Marek Nowak",
         content: "Zgłaszałem to do urzędu kilka miesięcy temu, ale jak na razie cisza. Może warto ponowić zgłoszenie grupowo?",
