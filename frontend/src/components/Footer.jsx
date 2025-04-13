@@ -29,7 +29,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="text-center mt-8 pt-8 border-t border-gray-700">
-          <p className="text-gray-400">© 2024 Twoja Firma. Wszelkie prawa zastrzeżone.</p>
+          <p className="text-gray-400">© 2025 Twoja Firma. Wszelkie prawa zastrzeżone.</p>
         </div>
       </div>
     </footer>

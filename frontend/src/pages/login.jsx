@@ -1,37 +1,48 @@
-import React from "react";
-import "./login.css";
+import React from 'react';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 const Login = () => {
   return (
-    <div className="login-container">
-      <header className="navbar">
-        <div className="hamburger">
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
-        <div className="navbar-right">
-          <div className="icon search" />
-          <div className="icon message" />
-          <div className="icon logout" />
-        </div>
-      </header>
+    <div className="min-h-screen flex flex-col bg-gray-50">
+      <Navbar />
 
-      <main className="login-box">
-        <img
-          src="/login-logo.svg"
-          alt="Login Trusted Profile"
-          className="login-logo"
-        />
-        <p className="login-subtext">użyj profilu zaufanego</p>
-        <button className="login-button">Zaloguj</button>
-        <p className="login-description">
-          W celu weryfikacji użytkownika, należy zalogować się do systemu przy
-          pomocy profilu zaufanego
-        </p>
-      </main>
+      {/* Main content */}
+      <div className="flex-1 flex items-center justify-center p-4">
+        <div className="bg-white p-8 border border-gray-200 rounded-lg w-full max-w-md">
+          <div className="text-center space-y-6">
+            {/* Login logo and text */}
+            <div className="flex justify-center items-center gap-2">
+              <h1 className="text-4xl font-light">Login</h1>
+              <div className="relative">
+                <svg className="w-10 h-10" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M15 12L25 20L15 28" stroke="red" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <rect x="1" y="1" width="38" height="38" stroke="#E5E7EB" strokeWidth="2"/>
+                </svg>
+              </div>
+            </div>
+            
+            {/* Subtitle */}
+            <p className="text-gray-600 text-sm">
+              użyj profilu zaufanego
+            </p>
+
+            {/* Login button */}
+            <button className="w-full bg-[#2D0066] text-white py-3 text-lg font-medium hover:bg-[#250052] transition-colors">
+              Zaloguj
+            </button>
+
+            {/* Description text */}
+            <p className="text-gray-600 text-sm text-center max-w-sm mx-auto">
+              W celu weryfikacji użytkownika, należy zalogować się do systemu przy pomocy profilu zaufanego
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <Footer />
     </div>
   );
 };
 
-export default Login;
+export default Login; 
